@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from company.models import Company
+from company.paginators import CompanyPaginator
 from company.permissions import IsCompanyOwner
 
 from company.serializers import CompanySerializer, CompanyDetailSerializer, CompanyListSerializer, \
@@ -13,6 +14,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
     """Company view set."""
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
+    pagination_class = CompanyPaginator
     filter_backends = (filters.SearchFilter,)
     search_fields = ("country",)
 
