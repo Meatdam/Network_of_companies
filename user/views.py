@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from user.models import User
+from user.paginators import UsersPaginator
 from user.permissions import IsUser
 from user.serializers import UserSerializer, UserListSerializer
 
@@ -11,6 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """User view set."""
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    pagination_class = UsersPaginator
 
     def get_permissions(self):
         """Checking user access."""

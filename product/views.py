@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from company.models import Company
 from product.models import Product
+from product.paginators import ProductPaginator
 from product.serializers import ProductSerializer, ProductListSerializer, ProductDetailSerializer, \
     ProductUpdateSerializer
 
@@ -11,6 +12,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     """Product view set."""
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = ProductPaginator
 
     def get_permissions(self):
         """Checking product access."""
