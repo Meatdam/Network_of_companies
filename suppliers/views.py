@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from company.models import Company
 
 from suppliers.models import Supplier
+from suppliers.paginators import SuppliersPaginator
 from suppliers.permissions import IsSupplierOwner
 from suppliers.serializers import SupplierSerializer, SupplierUpdateSerializer, SupplierListSerializer
 
@@ -12,6 +13,7 @@ class SupplierViewSet(viewsets.ModelViewSet):
     """Supplier view set."""
     queryset = Supplier.objects.all()
     serializer_class = SupplierSerializer
+    pagination_class = SuppliersPaginator
 
     def get_permissions(self):
         """Checking supplier access."""
