@@ -26,30 +26,30 @@ _____
 Подkлючена документация swagger, redoc<br> 
 Так же отображенны все схемы, которые в приложение присутствуют.
 _____
-Для запуска проекта у себя локально без Docker необходимо:
+
+Для запуска проекта без использования Docker необходимо сделать 
 1. git clone репозитория
 ```
-git@github.com:Meatdam/key_manager.git
+git@github.com:Meatdam/online_traning_LMS_system.git
 ```
-2. Установить и инициализировать виртуальное окружение `venv`
+2. Установить виртуальное окружение `venv`
 ```
-poetry init
+python3 -m venv venv для MacOS и Linux систем
+python -m venv venv для windows
 ```
-3. Создать базу данных в ```PgAdmin```, либо через терминал.
-4. Заполнить своими данными файл .env в корне вашего проекта. Образец файла лежит в корне .env.example
-5. Для применение миграция выполните команды
+3. Активировать виртуальное окружение
 ```
-alembic revision --autogenerate -m "Database creation
+source venv/bin/activate для MasOs и Linux систем
+venv\Scripts\activate.bat для windows
 ```
+4. установить файл с зависимостями
 ```
-alembic upgrade head
+pip install -r requirements.txt
 ```
-6. Для запуска проекта использовать команду
-```
-uvicorn src.main:app --reload
-```
-иля запустить проект с файла `main.py`
+4. Создать базу данных в ```PgAdmin```, либо через терминал. Необходимо дать название в файле settings.py в каталоге 'base' в константе (словаре) 'DATABASES'
 
+5. Создать в корне проекта файл `.env` и заполнить его данными из файла `.env.example`
+_____
 Запуск приложения через Docker:<br>
 1. Повторить шаги 1-3
 2. Запустить Docker локально на машине
@@ -65,7 +65,7 @@ _____
 docker-compose down 
 ```
 _____
-В проекте подключен `git actions` для тестирования кода, линтером `flake8` и библиотекой `pytest`
 
 Автор проекта:<br>
 [Кузькин Илья](https://github.com/Meatdam)
+
