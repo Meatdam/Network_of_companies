@@ -12,9 +12,7 @@
             <xsl:choose>
                 <xsl:when test="$date != ''">
                     <!-- Преобразование даты в нужный формат -->
-                    <xsl:value-of select="substring($date, 6, 2)"/>.<!-- Месяц -->
-                    <xsl:value-of select="substring($date, 9, 2)"/>.<!-- День -->
-                    <xsl:value-of select="substring($date, 1, 4)"/><!-- Год -->
+                    <xsl:value-of select="substring($date, 6, 2)"/>.<xsl:value-of select="substring($date, 9, 2)"/>.<xsl:value-of select="substring($date, 1, 4)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:text>N/A</xsl:text> <!-- Если дата пустая -->
@@ -41,7 +39,7 @@
             <body>
 				<div class="container">
 				<div style="text-align: center; margin-top: 40px;">
-				<img src="https://grottbjorn.com/upload/files/WuBlF0_C0/logo31052024.png" alt="Логотип" style="width:800px;"/>
+				<img src="C:\Users\Kuzkin\Desktop\logo31052024.png" alt="Логотип" style="width:800px;"/>
 				</div>
 				
 				<h3 style="text-align: center;"><xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_NAME"/></h3>
@@ -205,11 +203,10 @@
 				
 				<h4>5.5. Информация об остатках денежных средств:</h4>
 				
-				<table border="1" style="margin-bottom: 30px;  width: 60%;  margin-left: 2.5%;">
+				<table border="1" style="margin-bottom: 30px;  width: 95%;  margin-left: 2.5%;">
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Дата</th>
-                        <th>Торговая площадка</th>
                         <th>Валюта</th>
                         <th>Остаток</th>
                         <th>Задолжность перед Брокером</th>
@@ -234,7 +231,6 @@
 							<td><xsl:call-template name="format-date">
 								<xsl:with-param name="date" select="@Date"/> 
 							</xsl:call-template></td>
-                            <td><xsl:value-of select="@Marketplace"/></td>
                             <td><xsl:value-of select="@Currency"/></td>
                             <td><xsl:value-of select="@RemainderStart"/></td>
                             <td><xsl:value-of select="@DebtStart"/></td>
