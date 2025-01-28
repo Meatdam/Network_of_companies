@@ -12,7 +12,7 @@
             <xsl:choose>
                 <xsl:when test="$date != ''">
                     <!-- Преобразование даты в нужный формат -->
-                    <xsl:value-of select="substring($date, 6, 2)"/>.<xsl:value-of select="substring($date, 9, 2)"/>.<xsl:value-of select="substring($date, 1, 4)"/>
+                    <xsl:value-of select="substring($date, 9, 2)"/>.<xsl:value-of select="substring($date, 6, 2)"/>.<xsl:value-of select="substring($date, 1, 4)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:text>N/A</xsl:text> <!-- Если дата пустая -->
