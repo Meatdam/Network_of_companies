@@ -39,7 +39,7 @@
             <body>
 				<div class="container">
 				<div style="text-align: center; margin-top: 40px;">
-				<img src="C:\Users\Kuzkin\Desktop\logo31052024.png" alt="Логотип" style="width:800px;"/>
+				<img src="http://grottbjorn.com/upload/files/WuBlF0_C0/logo31052024.png"/>
 				</div>
 				
 				<h3 style="text-align: center;"><xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_NAME"/></h3>
