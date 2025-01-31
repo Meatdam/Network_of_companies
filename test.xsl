@@ -31,16 +31,28 @@
                     .section-header { background-color: #fae6a5; padding: 10px; }
                     .table-header { background-color: #e6e6e6; }
                     table { border-collapse: collapse;}
-                    th, td { border: 1px solid #ddd; padding: 8px; }
+                    th, td { border: 1px solid #ddd; padding: 8px; text-align: left;}
 					.container {width: 87%;  margin: 0 auto;}
 					h4 {margin-left: 3%;}
                 </style>
             </head>
             <body>
+			<div class="text_" style="color: #666666; margin-left: 200px; float: left; " >
+				<b>Финансовое ателье</b>
+			</div>
+			<div class="text" style="color: #666666; float: right;">
+				Акционерное общество Финансовое ателье ГроттБьерн
+			</div>
 				<div class="container">
-				<div style="text-align: center; margin-top: 40px;">
-				<img src="http://grottbjorn.com/upload/files/WuBlF0_C0/logo31052024.png"/>
+				<div class="logo" style=" margin-top: 10px;">
+				<img src="C:\Users\Kuzkin\Desktop\test2\logo.png" alt="Логотип"/>
 				</div>
+				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;">
+				<div class="text_2" style="margin-left: 10px;">
+				<p>г.Екатеринбург, пр.Ленина, 101/2</p>
+				<p>8 800 250 44 20</p>
+				<p>www.grottbjorn.com</p>
+				</div></a>
 				
 				<h3 style="text-align: center;"><xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_NAME"/></h3>
                 <!--<h2>Дата документа: <xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_DATE"/></h2>
@@ -94,15 +106,38 @@
                             <td><xsl:value-of select="@CalculationPeriod"/></td>
                             <td><xsl:value-of select="@Transactiontype"/></td>
                             <td><xsl:value-of select="@Asset"/></td>
-                            <td><xsl:value-of select="@Cost"/></td>
+                            <td>
+								<xsl:value-of select="format-number(@Cost, '#,##0.000000')"/>
+							</td>
                             <td><xsl:value-of select="@CurrencyPrices"/></td>
-                            <td><xsl:value-of select="@Quantity"/></td>
+                            <td>
+								<xsl:value-of select="round(@Quantity)"/>
+							</td>
+
                             <td><xsl:value-of select="@AmountCurrencyPayment"/></td>
                             <td><xsl:value-of select="@PaymentCurrency"/></td>
                             <td><xsl:value-of select="@AmountNCDCurrencyPayment"/></td>
                             <td><xsl:value-of select="@PlaceDeals"/></td>
-                            <td><xsl:value-of select="@ExchangeCommission"/></td>
-							<td><xsl:value-of select="@BrokerCommission"/></td>
+                            <td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@ExchangeCommission = '0.00' or @ExchangeCommission = 0">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@ExchangeCommission"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</td>
+						<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@BrokerCommission = '0.00' or @BrokerCommission = 0">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@BrokerCommission"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</td>
                             <td><xsl:value-of select="@NDS"/></td>
                         </tr>
                     </xsl:for-each>
@@ -130,12 +165,66 @@
                             <!-- Вывод значений атрибутов -->
                             <td><xsl:value-of select="@Asset"/></td>
                             <td><xsl:value-of select="@PlaceRegistration"/></td>
-                            <td><xsl:value-of select="@RemainderStart"/></td>
-                            <td><xsl:value-of select="@Enrolled"/></td>
-                            <td><xsl:value-of select="@Writtenoff"/></td>
-                            <td><xsl:value-of select="@RemainderEnd"/></td>
-                            <td><xsl:value-of select="@MarketPrice"/></td>
-                            <td><xsl:value-of select="@PlannedRef"/></td>
+                            <td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@RemainderStart = '0,00'">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@RemainderStart"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
+							<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@Enrolled = '0,00'">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@Enrolled"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
+							<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@Writtenoff = '0,00'">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@Writtenoff"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
+							<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@RemainderEnd = '0,00'">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@RemainderEnd"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
+							<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@MarketPrice = ''">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="format-number(@MarketPrice, '##0.0000')"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
+							<td style="mso-number-format:\@;">
+							<xsl:choose>
+								<xsl:when test="@PlannedRef = '0,00'">
+									<xsl:value-of select="''"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="@PlannedRef"/>
+								</xsl:otherwise>
+							</xsl:choose>
+							</td>
                             <td><xsl:value-of select="@PaymentCurrency"/></td>
                             
                         </tr>
@@ -165,9 +254,16 @@
 							</xsl:call-template></td>
                             <td><xsl:value-of select="@Currency"/></td>
                             <td><xsl:value-of select="@Asset"/></td>
-                            <td><xsl:value-of select="@Requirements"/></td>
-                            <td><xsl:value-of select="@Liabilities"/></td>
-                            <td><xsl:value-of select="@Total"/></td>
+                            <td>
+								<xsl:value-of select="format-number(@Requirements, '##0.00')"/>
+							</td>
+							<td>
+								<xsl:value-of select="format-number(@Liabilities, '##0.00')"/>
+							</td>
+							<td>
+								<xsl:value-of select="format-number(@Total, '##0.00')"/>
+							</td>
+                           
                             
                             
                         </tr>
@@ -180,7 +276,7 @@
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Дата совершения операции</th>
-                        <th>Название операции</th>
+                        <th>Наименование операции</th>
                         <th>Валюта операции</th>
                         <th>Приход</th>
                         <th>Расход</th>
@@ -236,8 +332,13 @@
                             <td><xsl:value-of select="@DebtStart"/></td>
                             <td><xsl:value-of select="@MarginStart"/></td>
                             <td><xsl:value-of select="@FreeBalanceStart"/></td>
-                            <td><xsl:value-of select="@Enrolled"/></td>
-                            <td><xsl:value-of select="@Writtenoff"/></td>
+							<td>
+								<xsl:value-of select="format-number(@Enrolled, '##0.00')"/>
+							</td>
+							<td>
+								<xsl:value-of select="format-number(@Writtenoff, '##0.00')"/>
+							</td>
+                            
                             <td><xsl:value-of select="@Total"/></td>
                             <td><xsl:value-of select="@DebtEnd"/></td>
                             <td><xsl:value-of select="@MarginEND"/></td>
