@@ -37,22 +37,17 @@
                 </style>
             </head>
             <body>
-			<div class="text_" style="color: #666666; margin-left: 200px; float: left; " >
-				<b>Финансовое ателье</b>
+			
+			<div class="text" style="color: #666666; float: right; margin-top: 20px; margin-bottom: 20px; margin-right: 120px;">
+				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;"><p>Акционерное общество Финансовое ателье ГроттБьерн</p></a>
+				<p>Лицензия: № 166-02672-100000 от 01.11.2000 г.</p>
 			</div>
-			<div class="text" style="color: #666666; float: right;">
-				Акционерное общество Финансовое ателье ГроттБьерн
-			</div>
-				<div class="container">
-				<div class="logo" style=" margin-top: 10px;">
-				<img src="C:\Users\Kuzkin\Desktop\test2\logo.png" alt="Логотип"/>
+				<div class="container" style="clear: both;">
+				
+				
+				<div class="text_2" style="color: #666666; clear: both;">
+				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;"><img src="https://raw.githubusercontent.com/grottbjorn/styles-and-logos/refs/heads/main/test.png" alt="Логотип"/></a>
 				</div>
-				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;">
-				<div class="text_2" style="margin-left: 10px;">
-				<p>г.Екатеринбург, пр.Ленина, 101/2</p>
-				<p>8 800 250 44 20</p>
-				<p>www.grottbjorn.com</p>
-				</div></a>
 				
 				<h3 style="text-align: center;"><xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_NAME"/></h3>
                 <!--<h2>Дата документа: <xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_DATE"/></h2>
