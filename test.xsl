@@ -47,10 +47,57 @@
                         border-radius: 10px;
                         padding: 5px;
                         
-						width: 95%;
+						width: 80%;
 						background-color: #DAA520;
 						
                     }
+					
+					.table-container-3 {
+						border: 2px solid #E6E6FA; /* Рамка контейнера */
+                        border-radius: 10px;
+                        padding: 5px;
+                        
+						width: 60%;
+						background-color: #DAA520;
+					}
+					
+					.table-container-4 {
+						border: 2px solid #E6E6FA; /* Рамка контейнера */
+                        border-radius: 10px;
+                        padding: 5px;
+                        
+						width: 80%;
+						background-color: #DAA520;
+					}
+					
+					.table-container-5 {
+						border: 2px solid #E6E6FA; /* Рамка контейнера */
+                        border-radius: 10px;
+                        padding: 5px;
+                        
+						width: 95%;
+						background-color: #DAA520;
+					}
+					
+					.table-container-6 {
+						border: 2px solid #E6E6FA; /* Рамка контейнера */
+                        border-radius: 10px;
+                        padding: 5px;
+                        
+						width: 50%;
+						background-color: #DAA520;
+					}
+					
+					.table-container-7 {
+						border: 2px solid #E6E6FA; /* Рамка контейнера */
+                        border-radius: 10px;
+                        padding: 5px;
+                        
+						width: 80%;
+						background-color: #DAA520;
+					}
+					
+					
 					
                     table {
                         border-collapse: collapse;
@@ -78,9 +125,16 @@
 						background-color: #e6e6e6;
 					}
 					
+					.text-style {
+						font-size: 14px;
+						padding_top: 10px;
+						padding_bottom: 10px;
+						background-color: #DAA520;
+					}
+					
 					.marketplace-orange {
 						font-size: 14px;
-						background-color: #DAA520;
+						background-color: #e6e6e6;
 						padding: 10px;
 						display: flex;
 						justify-content: space-between;
@@ -100,13 +154,13 @@
 				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;"><p>Акционерное общество Финансовое ателье ГроттБьерн</p></a>
 				<p>Лицензия: № 166-02672-100000 от 01.11.2000 г.</p>
 			</div>
-				<div class="container" style="clear: both;">
+				
 				
 				
 				<div class="text_2" style="color: #666666; clear: both;">
 				<a href="https://grottbjorn.com/" style="color: #666666; text-decoration: none;"><img src="https://raw.githubusercontent.com/grottbjorn/styles-and-logos/refs/heads/main/test.png" alt="Логотип"/></a>
 				</div>
-				
+				<div class="container" style="clear: both;">
 				<h3 style="text-align: center;"><xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_NAME"/></h3>
                 <!--<h2>Дата документа: <xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_DATE"/></h2>
                 <h2>Время документа: <xsl:value-of select="/REPORT_DOC/DOC_REQUISITES/@DOC_TIME"/></h2>-->
@@ -121,7 +175,7 @@
                 <h4>1.3. Сделки РЕПО:</h4>
 
 				  <div class="table-container">  <!-- Общий контейнер -->
-				<table border="1" style="  width: 95%; ">
+				<table border="1">
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Дата заключения сделки</th>
@@ -144,7 +198,7 @@
                         <th>в т.ч. НДС</th>
                     </tr>
 					<tr>
-						<td colspan="18" style="padding: 0; border-left: 2px solid #DAA520; border-right: 2px solid #DAA520;">Исполненные сделки:</td>
+						<td colspan="18" class="text-style" style="border-left: 2px solid #DAA520; border-right: 2px solid #DAA520;"><b>Исполненные сделки:</b></td>
 					</tr>
                     <!-- Цикл по сделкам со статусом "1" -->
                     <xsl:variable name="executedDeals" select="/REPORT_DOC/REPODeals/REPODeal[@Status='1']"/>
@@ -200,11 +254,11 @@
                         </tr>
                     </xsl:for-each>
 					<tr   class="marketplace-footer">
-						<td colspan="9" style="text-align: left;">Количество сделок:</td>
-						<td colspan="9" style="text-align: right;"><xsl:value-of select="count($executedDeals)"/></td>
+						<td colspan="17" style="text-align: left;"><b>Количество сделок:</b></td>
+						<td colspan="18" style="text-align: right;"><xsl:value-of select="count($executedDeals)"/></td>
 					</tr>
 					<tr>
-						<td colspan="18" style="padding: 0; border-left: 2px solid #DAA520; border-right: 2px solid #DAA520;">Незавершенные сделки к исполнению:</td>
+						<td colspan="18" class="text-style" style="border-left: 2px solid #DAA520; border-right: 2px solid #DAA520;"><b>Незавершенные сделки к исполнению:</b></td>
 					</tr>
                     <!-- Цикл по сделкам со статусом "2" -->
                     <xsl:variable name="pendingDeals" select="/REPORT_DOC/REPODeals/REPODeal[@Status='2']"/>
@@ -260,15 +314,15 @@
                         </tr>
                     </xsl:for-each>
 					<tr  class="marketplace-footer">
-						<td colspan="9" style="text-align: left;">Количество сделок:</td>
-						<td colspan="9" style="text-align: right;"><xsl:value-of select="count($pendingDeals)"/></td>
+						<td colspan="17" style="text-align: left;"><b>Количество сделок:</b></td>
+						<td colspan="18" style="text-align: right;"><xsl:value-of select="count($pendingDeals)"/></td>
 					</tr>
                 </table>
 				</div> <!-- Закрываем общий контейнер -->
 				
 				<h4>3.2. Информация о состоянии портфеля ценных бумаг:</h4>
 				<div class="table-container-2">
-				<table border="1" style=" width: 90%; ">
+				<table border="1" >
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Инструмент</th>
@@ -356,8 +410,8 @@
 				</div>
 				
 				<h4>3.5. Информация по обязательствам фондового рынка:</h4>
-				
-				<table border="1" style=" margin-bottom: 30px;  width: 50%;  margin-left: 2.5%;">
+				<div class="table-container-3">
+				<table border="1">
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Дата Исполнения</th>
@@ -393,10 +447,11 @@
                         </tr>
                     </xsl:for-each>
                 </table>
+				</div>
 				
 				<h4>5.4. Информация о движении денежных средств:</h4>
-				
-				<table border="1" style=" margin-bottom: 30px;  width: 80%;  margin-left: 2.5%;">
+				<div class="table-container-4">
+				<table border="1" >
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Дата совершения операции</th>
@@ -420,9 +475,9 @@
                         </tr>
                     </xsl:for-each>
                 </table>
-				
+				</div>
 				<h4>5.5. Информация об остатках денежных средств:</h4>
-
+		<div class="table-container-5">
         <!-- Создаем таблицу -->
         <table border="1" style="box-sizing: border-box;">
             <tr class="table-header">
@@ -445,13 +500,8 @@
                 <th>Плановый исходящий остаток с учетом обязательств</th>
             </tr>
 			<tr>
-                <td colspan="16" style="padding: 0;">
-                    <div class="marketplace-footer">
-                        <div style="float: left;">
-                          <b>В разрезе площадок:</b>
-                        </div>
-                    </div>
-                </td>
+				<td colspan="16" class="text-style" style="border-left: 2px solid #DAA520; border-right: 2px solid #DAA520; border-bottom: 2px solid black;"><b>В разрезе площадок:</b></td>
+                
             </tr>
             <!-- Группировка по Marketplace -->
             <xsl:for-each select="//CashMarkets[not(@Marketplace = preceding-sibling::CashMarkets/@Marketplace)]">
@@ -467,7 +517,7 @@
                         <td colspan="16" style="padding: 0;">
                             <div class="marketplace-orange">
                                 <div style="float: left;">
-                                   <xsl:value-of select="$currentMarketplace"/>
+                                   <b><xsl:value-of select="$currentMarketplace"/></b>
                                 </div>
                             </div>
                         </td>
@@ -502,35 +552,28 @@
                             <td><xsl:value-of select="@PlannedClosing"/></td>
                         </tr>
                     </xsl:for-each>
-					<tr>
-                        <td colspan="16" style="padding: 0;">
-                            <div class="marketplace-header">
-                                <div style="float: left;">
-                                   <b>Итого по площадке:</b>
-                                </div>
-                                <div style="float: right; margin-right: 150px;">
+					<tr class="marketplace-header">
+                        <td colspan="14"><b>Итого по площадке:</b></td>
+                        <td colspan="16">
 								<xsl:choose>
-								<xsl:when test="$currentTotalSum = '0.00' or $currentTotalSum = 0">
-									<xsl:value-of select="''"/>
-								</xsl:when>
-								<xsl:otherwise>
-									<b><xsl:value-of select="$currentTotalSum"/></b>
-								</xsl:otherwise>
-							</xsl:choose>
-                                   
-                                </div>
-                            </div>
+									<xsl:when test="$currentTotalSum = '0.00' or $currentTotalSum = 0">
+										<xsl:value-of select="''"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<b><xsl:value-of select="$currentTotalSum"/></b>
+									</xsl:otherwise>
+								</xsl:choose>
                         </td>
-                    </tr>
+                            
+                       
+                   </tr>
                 </xsl:if>
             </xsl:for-each>
 
 			  <tr>
-                <td colspan="16" style="padding: 0;">
-					<div class="marketplace-footer">
-						<b>В разрезе валют:</b>
-					</div>
-				</td>
+                
+					<td colspan="16" class="text-style" style="border-left: 2px solid #DAA520; border-right: 2px solid #DAA520; border-top: 2px solid black;"><b>В разрезе валют:</b></td>
+				
             </tr>
 
 				<xsl:for-each select="//CashMarkets[not(@Currency = preceding-sibling::CashMarkets/@Currency)]">
@@ -587,10 +630,11 @@
 					</xsl:if>
 				</xsl:for-each>
         </table>
-				
+				</div>
 				
 				<h4>6.1. Расшифровка комиссий:</h4>
-				<table border="1" style="margin-bottom: 30px;  width: 40%;  margin-left: 2.5%;">
+				<div class="table-container-6">
+				<table border="1">
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Вид комисии</th>
@@ -607,9 +651,11 @@
                         </tr>
                     </xsl:for-each>
                 </table>
+				</div>
 				
 				<h4>7.1. Расшифровка кодов ценных бумаг:</h4>
-				<table border="1" style="margin-bottom: 30px;  width: 80%;  margin-left: 2.5%;">
+				<div class="table-container-7">
+				<table border="1">
                     <tr class="table-header">
                         <!-- Заголовки таблицы на основе атрибутов REPODeal -->
                         <th>Инструмент</th>
@@ -637,7 +683,7 @@
                         </tr>
                     </xsl:for-each>
                 </table>
-				
+				</div>
             </body>
         </html>
     </xsl:template>
